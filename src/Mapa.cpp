@@ -19,6 +19,9 @@ void Mapa::addCelula(std::vector<Celula> linha){
 bool Mapa::revelarCelula(int x, int y){ 
     if (celulas[y][x].getRevelado() == false && celulas[y][x].getMarcada() == false){
         celulas[y][x].revelar();
+        if (celulas[y][x].getEstado() == BOMBA){
+            perdeu = true;
+        }
         qntRevelados++;
     }
     std::vector<std::pair<int, int>> proximos;
